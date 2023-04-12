@@ -3,13 +3,17 @@ run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: [push]
 jobs:
   Explore-GitHub-Actions:
-    runs-on: node:18
+    runs-on: ubuntu-latest
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
       - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+      - run: apt-get install-y curl
       - run: echo "Install Azure CLI"
       - run: curl -sL https://aka.ms/InstallAzureCLIDeb | bash
+      - run: echo "Install node18"
+      - run: curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+      - run: sudo apt install -y nodejs
       - run: npm install -g azure-functions-core-tools@3 --unsafe-perm true
       - name: Check out repository code
         uses: actions/checkout@v3
