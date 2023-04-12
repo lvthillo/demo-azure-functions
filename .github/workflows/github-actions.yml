@@ -23,7 +23,13 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "Authenticate to Azure..."
-      - run: az login --service-principal -u $APPLICATION_ID -p $APPLICATION_SECRET --tenant $TENANT_ID
+      - run: az login --service-principal -u $APPLICATION_ID -p $application_secret --tenant $tenant_id
+        with:
+          application_id: ${{ secrets.APPLICATION_ID }}
+          application_secret: ${{ secrets.APPLICATION_SECRET }}
+          tenant_id: ${{ secrets.TENANT_ID }}
       - run: echo "Deploy..."
       - run: func azure functionapp publish $FUNCTION_APP --node
+        with:
+          function_app: ${{ secrets.FUNCTION_APP }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
