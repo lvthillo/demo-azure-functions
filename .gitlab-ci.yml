@@ -1,0 +1,13 @@
+stages:
+  - deploy
+
+deploy:
+  stage: deploy
+  image: node:18
+  script:
+    - curl -sL https://aka.ms/InstallAzureCLIDeb | bash
+    - npm install -g azure-functions-core-tools@3 --unsafe-perm true
+    - az login --service-principal -u $APPLICATION_ID -p $APPLICATION_SECRET --tenant $TENANT_ID
+    - func azure functionapp publish $FUNCTION_APP --node
+  only:
+    - master
