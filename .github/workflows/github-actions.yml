@@ -1,5 +1,5 @@
-name: GitHub Actions Demo
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+name: Azure Function Deploy
+run-name: ${{ github.actor }} is deploying Azure Function 🚀
 on: [push]
 jobs:
   Explore-GitHub-Actions:
@@ -21,7 +21,7 @@ jobs:
       - name: Authenticate to Azure
         run: |-
           echo "Authenticate to Azure..."
-          az login --service-principal -u $APPLICATION_ID -p $application_secret --tenant $tenant_id
+          az login --service-principal -u $application_id -p $application_secret --tenant $tenant_id
         env:
           application_id: ${{ secrets.APPLICATION_ID }}
           application_secret: ${{ secrets.APPLICATION_SECRET }}
