@@ -2,7 +2,7 @@ name: Azure Function Deploy
 run-name: ${{ github.actor }} is deploying Azure Function 🚀
 on: [push]
 jobs:
-  Explore-GitHub-Actions:
+  Deploy-To-Azure:
     runs-on: ubuntu-latest
     steps:
       - name: Prepare environment
