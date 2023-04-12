@@ -10,9 +10,9 @@ jobs:
       - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
       - run: sudo apt-get install -y curl
       - run: echo "Install Azure CLI"
-      - run: curl -sL https://aka.ms/InstallAzureCLIDeb | bash
+      - run: sudo curl -sL https://aka.ms/InstallAzureCLIDeb | bash
       - run: echo "Install node18"
-      - run: curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+      - run: sudo curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
       - run: sudo apt install -y nodejs
       - run: npm install -g azure-functions-core-tools@3 --unsafe-perm true
       - name: Check out repository code
